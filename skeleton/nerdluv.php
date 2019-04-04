@@ -10,7 +10,7 @@
 	<head>
 		<title>NerdLuv.com</title>
 		<link rel="shortcut icon" href="http://www.cs.washington.edu/education/courses/cse190m/12sp/homework/4/heart.gif" type="image/gif" />
-		<link rel="stylesheet" href="nerdluv.css" type="text/css" />
+		<link rel="stylesheet" href="public/nerdluv.css" type="text/css" />
 	</head>
 
 	<body>
