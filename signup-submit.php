@@ -19,3 +19,22 @@
 		}
 	}
 
+
+	if($valid) {
+
+		$data = array(
+			"name" => $_POST["name"],
+			"gender" => strtoupper($_POST["gender"]),
+			"age" => $_POST["age"],
+			"type" => $_POST["type"],
+			"os" => $_POST["os"],
+			"min" => $_POST["min"],
+			"max" => $_POST["max"]
+		);
+
+		$user = new User();
+		$user->add($data);
+	}
+
+?>
+
