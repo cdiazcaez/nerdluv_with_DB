@@ -50,3 +50,18 @@ class User {
 		}
 
 	}
+
+	private function getByName($name) {
+
+		$stmt = $this->conn->prepare("SELECT u.id, u.name, u.age, u.gender, up.type, uo.name os, usa.smin min, usa.smax max FROM `users` u 
+			INNER JOIN user_personality up ON up.user = u.id
+			INNER JOIN user_os uo ON uo.user = u.id
+			INNER JOIN user_seeking_age usa ON usa.user = u.id WHERE u.name = ?");
+
+		$stmt->execute([ $name ]);
+
+		$user = $stmt->fetch();
+
+		return $user;
+
+	}
