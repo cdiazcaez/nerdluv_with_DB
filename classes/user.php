@@ -39,3 +39,14 @@ class User {
 
 
 		    return $this->conn->commit();
+		} catch(Exception $e) {
+		    //An exception has occured, which means that one of our database queries failed.
+		    //Print out the error message.
+		    echo $e->getMessage();
+    		//Rollback the transaction.
+    		$this->conn->rollBack();
+
+    		return false;
+		}
+
+	}
