@@ -38,3 +38,27 @@
 
 ?>
 
+
+<?php include("top.html"); ?>
+
+<?php if($valid) { ?>
+	<h1>Thank you!</h1>
+	<p>Welcome to NerdLub, <?=$_POST["name"];?></p>
+	<p>Now <a href="matches.php">log in to see your matches!</a></p>
+<?php } else { ?>
+
+	<ul>
+	<?php foreach($errors as $error) { ?>
+		<li><?=$error;?></li>
+	<?php } ?>
+
+	</ul>
+<?php } ?>
+
+
+
+
+<?php include("bottom.html"); ?>
+
+
+
