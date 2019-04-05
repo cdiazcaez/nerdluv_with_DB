@@ -65,3 +65,35 @@ class User {
 		return $user;
 
 	}
+
+
+	public function match($name) {
+
+		$user = $this->getByName($name);
+
+		$stmt = $this->conn->prepare("SELECT u.name, u.age, u.gender, up.type, uo.name os, usa.smin min, usa.smax max FROM `users` u 
+			INNER JOIN user_personality up ON up.user = u.id
+			INNER JOIN user_os uo ON uo.user = u.id
+			INNER JOIN user_seeking_age usa ON usa.user = u.id
+			WHERE 
+				up.type = ? AND uo.name = ? AND u.id != ? 
+				AND (? BETWEEN usa.smin AND usa.smax)
+				AND (u.age BETWEEN ? AND ?)
+			");
+
+		$stmt->execute([
+			$user["type"],
+			$user["os"],
+			$user["id"],
+			$user["age"],
+			$user["min"],
+			$user["max"]
+		]);
+
+		$matches = $stmt->fetchAll();
+
+		return $matches;
+
+	}
+
+}
